@@ -50,6 +50,28 @@ A view template should only refer to 1 object.
 
 Facade Pattern: A facade is an object that provides a simplified interface to a larger body of code. In Rails world, it's usually called Presenter.
 
+```ruby
+class ViewFacade
+
+  def initialize(params)
+    @object = params[:id]
+    @params = params 
+  end
+
+  def object_attribute
+    object.attribute
+  end
+  
+  def associated_object_attribute
+    object.associated_object.attribute
+  end
+  
+  private 
+  
+  attr_accessor :params, :object
+end
+```
+
 ## We write tests for our code
 
 Testing will provide a few main benefits when done correctly. First, it will help you develop the behaviors within your app. You may write a test that your model is validating the presence of an email. Then realizing you needed to include validations for the password or add a “retype password” input box.
