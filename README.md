@@ -52,6 +52,12 @@ Facade Pattern: A facade is an object that provides a simplified interface to a 
 
 ## We write tests for our code
 
+Testing will provide a few main benefits when done correctly. First, it will help you develop the behaviors within your app. You may write a test that your model is validating the presence of an email. Then realizing you needed to include validations for the password or add a “retype password” input box.
+
+Another great reason to test is to protect yourself against regressions within your application as your modifying code or adding new features. This will also give you confidence and assurance when your refactoring classes, collapsing code or removing extraneous code. If written tests pass both before and after changes you should be good to go! Another testing method is to write a test after you find an issue or bug in your application. Ensuring the fix works and does not plague your application in the future.
+
+In our application we are using RSPEC 3 for unit tests and integration tests. We are following the pattern define in the better specs website. http://www.betterspecs.org/
+
 ## We like SOA (Service Oriented Architecture)
 
 Rails follows a Model-View-Controller pattern. This raises questions around where programming logic should go once a Ruby on Rails application reaches a certain size. Generally, the principles are:
