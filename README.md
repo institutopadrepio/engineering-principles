@@ -52,6 +52,43 @@ Facade Pattern: A facade is an object that provides a simplified interface to a 
 
 ## We write tests for our code
 
+## We like SOA (Service Oriented Architecture)
+
+Rails follows a Model-View-Controller pattern. This raises questions around where programming logic should go once a Ruby on Rails application reaches a certain size. Generally, the principles are:
+
+* Forget fat Models (don’t allow them to become bloated)
+* Keep Views dumb (so don’t put complex logic there)
+* And Controllers skinny (so don’t put too much there)
+
+*So where should you put anything that’s more than a simple query or action?*
+
+One way to support Object-Oriented Design is with the Service Object. This can be a class or module in Ruby that performs an action. It can help take out logic from other areas of the MVC files.
+
+
+Our template for service looks like the code below:
+ 1. Strong initializer to receive parameters
+ 2. One public method to expose the service. The other methods should be private.
+ 3. Strong result from our service. Our services always return a Result objecti with the result of the operation, the error and the object
+ 4. Our service always handle expections
+ 
+```ruby
+class ServiceName < ApplicationService
+  def initialize(params)
+    @params = params 
+  end
+  
+  def call
+    Result.new(true, nil, object)
+  rescue StandardError => e 
+    Result.new(false, e.message, nil)
+  end
+  
+  private 
+  
+  attr_accessor :params
+end
+```
+
 ## *Why do we need these rules?*
 
 1. 100 lines per class: Simplified version of SLOC
@@ -59,5 +96,9 @@ Facade Pattern: A facade is an object that provides a simplified interface to a 
 3. 4 parameters per method: Simplified version of ABC metric
 4. 1 object per view: Simplified version of ABC metric
 
+## Deployment
 
+## API
+
+## Services
 
