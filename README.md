@@ -104,6 +104,32 @@ end
 
 ## Deployment pipeline
 
+### Current Infrastructure
+
+Our application is hosted at Heroku. Our deployment process is manual. So, you need to add in your git configuration two new remotes.
+
+```bash
+[remote "production"]
+	url = https://git.heroku.com/padrepauloricardo.git
+	fetch = +refs/heads/*:refs/remotes/production/*
+
+[remote "staging"]
+	url = https://git.heroku.com/stg-padrepauloricardo.git
+	fetch = +refs/heads/*:refs/remotes/staging/*
+
+```
+We have travisCI for continuos integration. We didn't implement any hook for continuous delivery, so you need to run the commands below in order to deploy our application to staging server or production server.
+
+``` git push production:master```
+``` git push staging:master```
+
+
+### Our middle term vision
+
+1. We want to start working with continuous delivering for our application. We are improving the test coverage in order to stat that. 
+2. Using Kubernetes. Our application already runs using Docker, so our next step would be configure our rails application to run using Kubernetes
+3. Choose another host. We are considering three new possibilities: Amazon AWS, Google Cloud or Digital Ocean.
+
 ## API
 
 ## References
