@@ -54,10 +54,10 @@ Facade Pattern: A facade is an object that provides a simplified interface to a 
 
 ## *Why do we need these rules?*
 
-100 lines per class: Simplified version of SLOC
-5 lines per method: Simplified version of SLOC and Cyclomatic Complexity
-4 parameters per method: Simplified version of ABC metric
-1 object per view: Simplified version of ABC metric
+1. 100 lines per class: Simplified version of SLOC
+2. 5 lines per method: Simplified version of SLOC and Cyclomatic Complexity
+3. 4 parameters per method: Simplified version of ABC metric
+4. 1 object per view: Simplified version of ABC metric
 
 
 
