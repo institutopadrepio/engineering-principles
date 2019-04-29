@@ -135,4 +135,19 @@ We have travisCI for continuos integration. We didn't implement any hook for con
 
 ## API
 
+### API First and API as a product
+
+We prefer to adopt "API First" and "API as a Product" as key engineering principles. In a nutshell, API First encompasses a set of quality-related standards (including the API guidelines and tooling) and fosters a peer review culture; it requires two aspects:
+
+* define APIs outside the code first using a standard specification language (Open API 2.0)
+* get early review feedback from peers and client developers
+
+### RESTful APIs with JSON payload
+
+We prefer REST-based APIs with JSON payloads to SOAP. Distributed SOAs following the REST style have a looser coupling between client and server implementations and comes with less rigid client/server contracts that do not break if either side make certain changes. Hence it is easier to build interoperating distributed systems that can be evolved in parallel by different teams while continuing to work. REST-like APIs with JSON payload is the most widely accepted and used service interfacing style in the internet web service industry.
+
+Be conservative in what you send, be liberal in what you accept. APIs must be evolved without breaking any consumers.
+
+### General Guidelines for API
+
 ## References
