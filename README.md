@@ -102,9 +102,6 @@ end
 3. 4 parameters per method: Simplified version of ABC metric
 4. 1 object per view: Simplified version of ABC metric
 
-## Deployment
+## Deployment pipeline
 
 ## API
-
-## Services
-
