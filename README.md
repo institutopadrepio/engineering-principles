@@ -112,12 +112,15 @@ Our application is hosted at Heroku. Our deployment process is manual. So, you n
 [remote "production"]
 	url = https://git.heroku.com/padrepauloricardo.git
 	fetch = +refs/heads/*:refs/remotes/production/*
+```
+
+```bash
 
 [remote "staging"]
 	url = https://git.heroku.com/stg-padrepauloricardo.git
 	fetch = +refs/heads/*:refs/remotes/staging/*
-
 ```
+
 We have travisCI for continuos integration. We didn't implement any hook for continuous delivery, so you need to run the commands below in order to deploy our application to staging server or production server.
 
 ``` git push production:master```
