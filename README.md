@@ -270,3 +270,9 @@ Use the custom HTTP Header X-HTTP-Method-Override to overrider the POST Method.
 
 
 ## References
+* https://blog.mwaysolutions.com/2014/06/05/10-best-practices-for-better-restful-api/
+* https://github.com/zalando/engineering-principles
+* https://opensource.zalando.com/restful-api-guidelines/
+* https://opensource.zalando.com/restful-api-guidelines/index.html#principles
+* https://jobs.zalando.com/tech/blog/so-youve-heard-about-radical-agility...-video/
+
