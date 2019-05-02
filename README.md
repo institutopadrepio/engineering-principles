@@ -172,4 +172,101 @@ Be conservative in what you send, be liberal in what you accept. APIs must be ev
 
 ### General Guidelines for API
 
+#### Use nouns but no verbs
+
+For an easy understanding use this structure for every resource:
+
+Do not use verbs:
+
+* /getAllCars
+* /createNewCar
+* /deleteAllRedCars
+
+#### GET method and query parameters should not alter the state
+
+Use PUT, POST and DELETE methods  instead of the GET method to alter the state.
+Do not use GET for state changes:
+
+* GET /users/711?activate or
+* GET /users/711/activate
+
+#### Use plural nouns
+
+Do not mix up singular and plural nouns. Keep it simple and use only plural nouns for all resources.
+
+* /cars instead of /car
+* /users instead of /user
+* /products instead of /product
+* /settings instead of /setting
+
+#### Use sub-resources for relations
+
+If a resource is related to another resource use subresources.
+
+* GET /cars/711/drivers/ Returns a list of drivers for car 711
+* GET /cars/711/drivers/4 Returns driver #4 for car 711
+
+#### Use HTTP headers for serialization formats
+
+Both, client and server, need to know which format is used for the communication. The format has to be specified in the HTTP-Header.
+
+Content-Type defines the request format.
+Accept defines a list of acceptable response formats.
+
+#### Provide filtering, sorting, field selection and paging for collections
+
+*Filtering*
+
+Use a unique query parameter for all fields or a query language for filtering.
+
+*Sorting*
+
+Allow ascending and descending sorting over multiple fields.
+
+*Paging*
+
+Use limit and offset. It is flexible for the user and common in leading databases. The default should be limit=20 and offset=0
+
+* GET /cars?offset=10&limit=5
+
+To send the total entries back to the user use the custom HTTP header: X-Total-Count.
+
+Links to the next or previous page should be provided in the HTTP header link as well. It is important to follow this link header values instead of constructing your own URLs.
+
+#### Version your API
+
+Make the API Version mandatory and do not release an unversioned API. Use a simple ordinal number and avoid dot notation such as 2.5.
+
+We are using the url for the API versioning starting with the letter „v“
+
+#### Handle Errors with HTTP status codes
+
+It is hard to work with an API that ignores error handling. Pure returning of a HTTP 500 with a stacktrace is not very helpful.
+
+#### Use error payloads
+
+All exceptions should be mapped in an error payload. Here is an example how a JSON payload should look like.
+
+```json
+{
+  "errors": [
+   {
+    "userMessage": "Sorry, the requested resource does not exist",
+    "internalMessage": "No car found in the database",
+    "code": 34,
+    "more info": "http://dev.mwaysolutions.com/blog/api/v1/errors/12345"
+   }
+  ]
+} 
+```
+
+#### Allow overriding HTTP method
+
+Some proxies support only POST and GET methods. To support a RESTful API with these limitations, the API needs a way to override the HTTP method.
+
+Use the custom HTTP Header X-HTTP-Method-Override to overrider the POST Method.
+
+
+
+
 ## References
